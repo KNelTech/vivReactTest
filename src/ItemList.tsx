@@ -33,8 +33,32 @@ const ItemList: FC = () => {
 
     fetchData();
   }, []);
-
-  return null; //Temp return
+  
+  
+  const handleItemClick = (item: Item) => {
+    setSelectedItem(item);
+  }
+  
+  
+  return (
+    <div>
+      {selectedItem && (
+        <div className="selected-item">
+          <h2>Selected Item</h2>
+          <p><strong>Title:</strong> {selectedItem.title}</p>
+          <p>{selectedItem.body}</p>
+        </div>
+      )}
+      <ul className="item-list">
+        {items.map((item) => (
+          <li key={item.id} onClick={() => handleItemClick(item)} className="item">
+            <strong>User ID:</strong> {item.userId}, <strong>Title:</strong> {item.title}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
+
 
 export default ItemList;
