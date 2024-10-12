@@ -13,6 +13,8 @@ export const ItemList: FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
+
+  /* Sync with api, grab JSON, put in item array, catch errors, update loading. */
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,18 +36,29 @@ export const ItemList: FC = () => {
     fetchData();
   }, []);
 
+  /* update state */
   const handleItemClick = (item: Item) => {
     setSelectedItem(item);
   };
 
+  /* ternary checks if selectedItem is true and that id matches an item id in the li's add that class Otherwise add nothing */
+  const getItemClass = (item: Item, selectedItem: Item | null) => {
+    return `item ${selectedItem && selectedItem.id === item.id ? 'selected-indicator' : ''}`
+  }
+
+  if (loading) {
+    return <div className="loading-message">We're loading the page for you.</div>; //add a spinner!
+  }
+
+  if (error) {
+    return <div className="error-message">Oh no, something went wrong.</div>;
+  }
+
   return (
-    <div>
+    <div className="main-container">
       {selectedItem && (
         <div className="selected-item">
-          <h2>Selected Item</h2>
-          <p>
-            <strong>Title:</strong> {selectedItem.title}
-          </p>
+          <h1>Selected Item Body:</h1>
           <p>{selectedItem.body}</p>
         </div>
       )}
@@ -54,7 +67,7 @@ export const ItemList: FC = () => {
           <li
             key={item.id}
             onClick={() => handleItemClick(item)}
-            className="item"
+            className={getItemClass(item, selectedItem)}
           >
             <strong>User ID:</strong> {item.userId}, <strong>Title:</strong>{" "}
             {item.title}
