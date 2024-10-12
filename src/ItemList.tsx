@@ -1,6 +1,5 @@
 import { FC, useState, useEffect } from "react";
 
-
 interface Item {
   userId: number;
   id: number;
@@ -14,11 +13,7 @@ export const ItemList: FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
-
-
-
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -38,26 +33,31 @@ export const ItemList: FC = () => {
 
     fetchData();
   }, []);
-  
-  
+
   const handleItemClick = (item: Item) => {
     setSelectedItem(item);
-  }
-  
-  
+  };
+
   return (
     <div>
       {selectedItem && (
         <div className="selected-item">
           <h2>Selected Item</h2>
-          <p><strong>Title:</strong> {selectedItem.title}</p>
+          <p>
+            <strong>Title:</strong> {selectedItem.title}
+          </p>
           <p>{selectedItem.body}</p>
         </div>
       )}
       <ul className="item-list">
         {items.map((item) => (
-          <li key={item.id} onClick={() => handleItemClick(item)} className="item">
-            <strong>User ID:</strong> {item.userId}, <strong>Title:</strong> {item.title}
+          <li
+            key={item.id}
+            onClick={() => handleItemClick(item)}
+            className="item"
+          >
+            <strong>User ID:</strong> {item.userId}, <strong>Title:</strong>{" "}
+            {item.title}
           </li>
         ))}
       </ul>
