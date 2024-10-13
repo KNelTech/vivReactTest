@@ -13,12 +13,11 @@ This is a React application I developed, following a set of specified directives
 
 ## Screenshots:
 
-![Screenshot of Loading State](https://github.com/user-attachments/assets/af87bebb-d8bd-4727-8e58-d911c51343a8)
-
-![Screenshot of Item List](https://github.com/user-attachments/assets/4cfcc34e-5ab1-4c24-89c2-e2ef72797ece)
-
-![Screenshot of Selected Item](https://github.com/user-attachments/assets/50af94cd-875c-4bb5-bb5d-652710efafd2)
-
-![Screenshot of Error State](https://github.com/user-attachments/assets/212748c5-9b76-4c60-9926-ec25a8e1a21a)
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/af87bebb-d8bd-4727-8e58-d911c51343a8" alt="Screenshot of initial loaded state" width="500" />
+  <img src="https://github.com/user-attachments/assets/4cfcc34e-5ab1-4c24-89c2-e2ef72797ece" alt="Screenshot of selected Item state" width="500" />
+  <img src="https://github.com/user-attachments/assets/50af94cd-875c-4bb5-bb5d-652710efafd2" alt="Screenshot of error state" width="500" />
+  <img src="https://github.com/user-attachments/assets/212748c5-9b76-4c60-9926-ec25a8e1a21a" alt="Screenshot of loading state" width="500" />
+</div>
 
 ---
