@@ -36,7 +36,7 @@ export const ItemList: FC = () => {
     fetchData();
   }, []);
 
-  /* update state */
+
   const handleItemClick = (item: Item) => {
     setSelectedItem(item);
   };
