@@ -41,27 +41,40 @@ export const ItemList: FC = () => {
     setSelectedItem(item);
   };
 
-  /* ternary checks if selectedItem is true and that id matches an item id in the li's add that class Otherwise add nothing */
+  /* Reuse state to apply styling class */
   const getItemClass = (item: Item, selectedItem: Item | null) => {
     return `item ${selectedItem && selectedItem.id === item.id ? 'selected-indicator' : ''}`
   }
 
+  /* these are here if we need to catch an error or loading first */
   if (loading) {
-    return <div className="loading-message">We're loading the page for you.</div>; //add a spinner!
+    return <div className="popup-message">
+      <p>We're loading the page for you.</p>
+      <span className="loading-spinner"></span>
+    </div>;
   }
 
   if (error) {
-    return <div className="error-message">Oh no, something went wrong.</div>;
+    return (
+      <div className="popup-message">
+        <p>Oh no, something went wrong.</p>
+        <p>{error}</p>
+      </div>
+    );
   }
 
   return (
     <div className="main-container">
-      {selectedItem && (
-        <div className="selected-item">
-          <h1>Selected Item Body:</h1>
-          <p>{selectedItem.body}</p>
-        </div>
-      )}
+      <div className="selected-item">
+        {selectedItem ? (
+          <>
+            <h1>Selected Item Body:</h1>
+            <p>{selectedItem.body}</p>
+          </>
+        ) : (
+          <h1>Select An Item.</h1>
+        )}
+      </div>
       <ul className="item-list">
         {items.map((item) => (
           <li
