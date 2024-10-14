@@ -41,7 +41,7 @@ export const ItemList: FC = () => {
     setSelectedItem(item);
   };
 
-  /* Reuse state to apply styling class */
+  /* Reuse state to apply visual highligh class to selected item in ul */
   const getItemClass = (item: Item, selectedItem: Item | null) => {
     return `item ${selectedItem && selectedItem.id === item.id ? 'selected-indicator' : ''}`
   }
