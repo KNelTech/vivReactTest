@@ -48,7 +48,7 @@ export const ItemList: FC = () => {
 
   /* these are here if we need to catch an error or loading first */
   if (loading) {
-    return <div className="popup-message">
+    return <div className="popup-message" aria-live="polite">
       <p>We're loading the page for you.</p>
       <span className="loading-spinner"></span>
     </div>;
@@ -56,7 +56,7 @@ export const ItemList: FC = () => {
 
   if (error) {
     return (
-      <div className="popup-message">
+      <div className="popup-message" aria-live="polite">
         <p>Oh no, something went wrong.</p>
         <p>{error}</p>
       </div>
@@ -64,8 +64,8 @@ export const ItemList: FC = () => {
   }
 
   return (
-    <div className="main-container">
-      <div className="selected-item">
+    <div className="main-container" role="main">
+      <div className="selected-item" aria-live="polite">
         {selectedItem ? (
           <>
             <h1>Selected Item Body:</h1>
@@ -75,7 +75,7 @@ export const ItemList: FC = () => {
           <h1>Select An Item.</h1>
         )}
       </div>
-      <ul className="item-list">
+      <ul className="item-list" role="list">
         {items.map((item) => (
           <li
             key={item.id}
